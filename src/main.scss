@@ -1,5 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .app {
   .app-header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+}
+
+.clipd {
+  &-navbar {
+    &-link {
+      margin: 0 4px;
+      padding: 4px;
+
+      &:hover,
+      &:active,
+      &:visited,
+      &:focus,
+      &:focus-visible {
+        text-decoration: none;
+        outline: 0;
+      }
+
+      &-text {
+        padding-left: 8px;
+      }
+
+      &.active {
+        border-bottom: 2px solid black;
+      }
+    }
+  }
+  &-navbar-brand {
+    display: flex;
+    &-icon {
+      width: 32px;
+      display: inline-block;
+    }
+    &-text {
+      display: inline-block;
+      align-self: center;
+    }
+  }
+}
+
+.plain-link {
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus,
+  &:focus-visible {
+    text-decoration: none;
+    outline: 0;
+    color: black;
   }
 }

@@ -1,15 +1,11 @@
 import React from "react";
+import AppRouter from "./router";
 import "./main.scss";
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
 function App() {
-  return (
-    <div className="app">
-      <header className="app-header">
-        <h1>ClipD</h1>
-        <p>A simple to use persistent clipboard manager.</p>
-      </header>
-    </div>
-  );
+  return <AppRouter />;
 }
 
 export default App;
