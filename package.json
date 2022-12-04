@@ -2,6 +2,7 @@
   "name": "clipd",
   "version": "0.1.0",
   "private": true,
+  "main": "electron/main.js",
   "dependencies": {
     "@blueprintjs/core": "^4.11.6",
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,7 +20,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently -k \"npm:electron-app\" \"npm:electron-server\"",
+    "electron-app": "BROWSER=none npm start",
+    "electron-server": "electron ."
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +44,8 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
+    "electron": "^22.0.0",
     "eslint": "^8.26.0",
     "eslint-plugin-react": "^7.31.10"
   }
