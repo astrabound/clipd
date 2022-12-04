@@ -1,17 +1,35 @@
 const fs = require("fs");
+const path = require("path");
 
-const readContentFromFile = (path) => {
+const parseFilePath = (filePath) => {
   try {
-    const data = fs.readFileSync(path, "utf8");
+    return path.parse(filePath);
+  } catch (err) {
+    return null;
+  }
+};
+
+const listFilesinDirectory = (directory) => {
+  try {
+    const files = fs.readdirSync(directory);
+    return files;
+  } catch (err) {
+    return null;
+  }
+};
+
+const readContentFromFile = (filePath) => {
+  try {
+    const data = fs.readFileSync(filePath, "utf8");
     return data;
   } catch (err) {
     return null;
   }
 };
 
-const writeContentToFile = (path, content) => {
+const writeContentToFile = (filePath, content) => {
   try {
-    fs.writeFileSync(path, content, "utf8");
+    fs.writeFileSync(filePath, content, "utf8");
     return true;
   } catch (err) {
     return false;
@@ -21,6 +39,8 @@ const writeContentToFile = (path, content) => {
 // TODO: Add ability to copy/move clip files.
 
 module.exports = {
+  parseFilePath,
+  listFilesinDirectory,
   readContentFromFile,
   writeContentToFile,
 };

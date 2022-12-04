@@ -1,7 +1,7 @@
 const { app, BrowserWindow } = require("electron");
 const { platform } = require("node:process");
 const path = require("node:path");
-
+const ext_installer = require("electron-devtools-installer");
 const createWindow = async () => {
   // Create the browser window.
   const win = new BrowserWindow({
@@ -21,13 +21,21 @@ const createWindow = async () => {
   }, 5000);
 };
 
-app.whenReady().then(() => {
-  createWindow();
+app
+  .whenReady()
+  .then(() => {
+    createWindow();
 
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    app.on("activate", () => {
+      if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    });
+  })
+  .then(() => {
+    ext_installer
+      .default(ext_installer.REDUX_DEVTOOLS)
+      .then((name) => console.log(`Added Extension:  ${name}`))
+      .catch((err) => console.log("An error occurred: ", err));
   });
-});
 
 app.on("window-all-closed", () => {
   if (platform !== "darwin") {
